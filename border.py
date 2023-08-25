@@ -1,3 +1,4 @@
+import tkinter as tk
 border_effects = {
     "flat": tk.FLAT,
     "sunken": tk.SUNKEN,

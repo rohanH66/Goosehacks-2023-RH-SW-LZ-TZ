@@ -2,7 +2,6 @@ import tkinter as tk
 from PIL import ImageTk
 from PIL import Image
 from PIL import ImageOps
-from object_class import Object
 from mode_selector import select_mode
 from mode_1 import mode_one
 from mode_2_v1 import mode_two_v1
