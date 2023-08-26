@@ -53,16 +53,14 @@ def rapid_click():  #function that will spawn in the next button
     #calculates the total time spent per button
     
     if count != 0:
-        print(total)
+        # print(total)
         _sum += total
-        print(_sum, "sum")
+        # print(_sum, "sum")
     #prints out the total time spent on all the buttons after each button has been pressed. 
     #for testing purpose
    
     if count < 9: #if less than 10 buttons have been pressed. 
-        count+=1
-        print(count)
-        
+        count+=1        
         if count != 1: #if it is not the first button. update the total time shown on button 5 as well as the amount 
             if (total * 1000) < 1000:
                 button5.config(text=f"Count: {count}\nCurrent:\n{round((total * 1000) , 2)} ms")
@@ -106,8 +104,8 @@ def mode_one():
     width = window.winfo_screenwidth()
     height = window.winfo_screenheight()
     
-    print(width)
-    print(height)
+    # print(width)
+    # print(height)
 
     global scalerx
     scalerx = width / 1920

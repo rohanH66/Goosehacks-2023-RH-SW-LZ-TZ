@@ -10,9 +10,8 @@ import time
 import threading
 
 end = False
-
 car_xpos = 240
-ypos=0
+ypos = 0
 
 car_thread = ''
 overallxpos = 0
@@ -21,16 +20,12 @@ car1_x=0  #why we adding x position? Road is going horizontal no? -Larry
 car2_x=0
 car3_x=0
 
-
-
 importedscalerx = 0
 importedscalery = 0
 
 car_y_pos = {
     100, 200, 300, 400
 }
-
-
 
 def move(event):
     global importedscalerx
@@ -40,9 +35,8 @@ def move(event):
     frame_b.place_forget()
     global car_xpos
     temp = event.char
-    print(temp)
-    
-    
+    # print(temp)
+       
     if car_xpos == 75:
         if (temp=='d' or temp == 'D'):
             car_xpos += 165
@@ -102,7 +96,7 @@ def move(event):
     else:
         frame_b.place(x=car_xpos, y=650)
         window.update()
-    print(car_xpos)
+    # print(car_xpos)
     
 
 def car_down(car_frame, xpos, xscaler, yscaler):
@@ -116,7 +110,7 @@ def car_down(car_frame, xpos, xscaler, yscaler):
             time.sleep(.1)
             car_frame.place(x=round(xpos*xscaler), y=round(ypos*yscaler))
             window.update()
-            ypos+=round(yscaler*10)
+            ypos += round(yscaler*10)
             
             # print (x)
             

@@ -26,9 +26,6 @@ def select_mode():
     
     with open("window.txt", "w") as scalers:
         scalers.write(f"{scalerx}, {scalery}")
-        
-      
-
 
     # car = Image.open("car.png")
     # test = ImageTk.PhotoImage(car)

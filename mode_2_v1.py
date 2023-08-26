@@ -11,13 +11,11 @@ import sys
 from handle_mode_2 import handle_keypress, keypress, temp_char
 import keyboard
 
-
 count = 0         #to count how many you have attempted
 correct = 0       #to count how many you have pressed correct
 temp_start = 0    #temporary star and temporary end to calculate reaction time
 temp_end = 0
 _sum = 0          #it is a sum of all reaction times to calculate average
-
 
 overall_time = 0.2 #this is the reaction time required of this mode
 
@@ -40,9 +38,7 @@ def ask_question(value):
             button7.config(text=f"Total: {correct} / {count + 1}")
             window.update()                                             #updates percentage correct button
             return None
-            
         else:
-            
             button7.config(text=f"Total: {correct} / {count + 1}")
             window.update()
     except KeyError:
@@ -52,7 +48,6 @@ def ask_question(value):
         return None
    
     # use timeout and while loop to integrate function in handle_mode_two to set bool to true if keypress given (prompt until valid option, have exit button avalible as well)
-
 
 def start_time():
     start_time = time.time()
@@ -67,7 +62,7 @@ def start():
     frame_b.place_forget()
     window.update()
     temp_val = random.choice(options)        #gets a value between 0 and 2 inclusive
-    print(temp_val)
+    # print(temp_val)
     button3.config(text=f"{arrows[temp_val]}")  #prints out the arrow on the button. The arrow it prints out corresponds to each of the temp_val
     window.update()
     time.sleep(random.randint(3,5))        #choses random waiting time
@@ -96,13 +91,13 @@ def rapid_click():
     total = temp_end - temp_start        #calculates the time taken to press the button
     
     if count != 0:
-        print(total)
+        # print(total)
         _sum += total
-        print(_sum, "sum")    #just for trouble shooting purposes
+        # print(_sum, "sum")    #just for trouble shooting purposes
    
     if count < 9: 
         count+=1         #increase the number of attempted
-        print(count)
+        # print(count)
         
         if count != 1:
             if (total * 1000) < 1000:
@@ -114,18 +109,15 @@ def rapid_click():
         
         window.update()
         
-        window.update()
-        
         #spawns button
         xval = random.randint(0,1500)   #spawns button
         yval = random.randint(0,475)
         
         temp_val = random.choice(options)
-        print(temp_val)
+        # print(temp_val)
         button3.config(text=f"{arrows[temp_val]}")  
         
         #randomly choses which arrow to display
-
 
         window.update()
         time.sleep(random.randint(1,5))
@@ -169,8 +161,8 @@ def mode_two_v1():
     width = window.winfo_screenwidth()
     height = window.winfo_screenheight()
     
-    print(width)
-    print(height)
+    # print(width)
+    # print(height)
 
     global scalerx
     scalerx = width/1920
@@ -227,7 +219,6 @@ def mode_two_v1():
     frame_h = tk.Frame(master=window, relief=border_effects["groove"], borderwidth=7)
 
     #sets various frames for various buttons for later use
-    
     
     # greeting.place(x=0, y=0)
     frame_a.place(x=round(scalerx*800), y=round(scalery*400))
@@ -298,9 +289,6 @@ def mode_two_v1():
     frame_e.place(x=round(scalerx*50), y=round(scalery*720))
     #sets the other values and aspects of buttons
     
-    
-    
-    
     button5.pack()
     
     global button6
@@ -319,7 +307,6 @@ def mode_two_v1():
     window.bind("<Key>", handle_keypress)
     #connects keypress to a function
     
-    
     button5.pack()
     
     global button7
@@ -334,7 +321,6 @@ def mode_two_v1():
     )
     frame_g.place(x=round(scalerx*1700), y=round(scalery*750))
 
-    
     button7.pack()
     
     global button8
@@ -351,12 +337,6 @@ def mode_two_v1():
     button8.pack()
     frame_h.place(x=round(1450*scalerx),y=round(710*scalery))
     
-    button6.pack()
-
     #set various buttons
     
-    
-    
-    
     window.mainloop()
-    
