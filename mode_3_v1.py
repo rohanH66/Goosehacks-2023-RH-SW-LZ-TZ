@@ -106,7 +106,7 @@ def car_down(car_frame, xpos, xscaler, yscaler):
     global overallxpos
     overallxpos = xpos
     if end != True:
-        for x in range(round(yscaler*68)):
+        for x in range(round(67/yscaler)):
             window.update()
             time.sleep(.1)
             car_frame.place(x=round(xpos*xscaler), y=round(ypos*yscaler))
