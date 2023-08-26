@@ -12,21 +12,21 @@ from handle_mode_2 import handle_keypress, keypress, temp_char
 import keyboard
 
 
-count = 0
-correct = 0
-temp_start = 0
+count = 0         #to count how many you have attempted
+correct = 0       #to count how many you have pressed correct
+temp_start = 0    #temporary star and temporary end to calculate reaction time
 temp_end = 0
-_sum = 0
-average = list()
+_sum = 0          #it is a sum of all reaction times to calculate average
 
-overall_time = 0.25
 
-def destroy_window(win):
+overall_time = 0.25   #this is the reaction time required of this mode
+
+def destroy_window(win):  #function to destroy the window 
     time.sleep(0.01)    
     window.destroy()
 
 def get_keypress():
-    temp = keyboard.read_key()
+    temp = keyboard.read_key()   #function to read the key the user has pressed
     if temp in keys:
         return temp
 def ask_question(value):
@@ -36,9 +36,9 @@ def ask_question(value):
     #get word value for character through key dictionary
     try:
         if value == key[key_from_user]:
-            correct += 1
+            correct += 1                                                  #if value matches the user imput key, increase correct number
             button7.config(text=f"Total: {correct} / {count + 1}")
-            window.update()
+            window.update()                                             #updates percentage correct button
             return None
             
         else:
@@ -57,20 +57,20 @@ def ask_question(value):
 def start_time():
     start_time = time.time()
     return start_time
-def end_time():
+def end_time():                                                #calculates user reaction times
     end_time = time.time()
     return end_time
 
 def start():
     global overall_time
-    frame_a.place_forget()
+    frame_a.place_forget()                         #forgets the start buttons that display instruction
     frame_b.place_forget()
     window.update()
-    temp_val = random.choice(options)
+    temp_val = random.choice(options)        #gets a value between 0 and 2 inclusive
     print(temp_val)
-    button3.config(text=f"{arrows[temp_val]}")
+    button3.config(text=f"{arrows[temp_val]}")  #prints out the arrow on the button. The arrow it prints out corresponds to each of the temp_val
     window.update()
-    time.sleep(random.randint(3,5))
+    time.sleep(random.randint(3,5))        #choses random waiting time
     temp_start = start_time()
     frame_c.place(x=round(scalerx * random.randint(0,1500)), y=round(scalery * random.randint(0,475)))
     window.update()
@@ -78,12 +78,12 @@ def start():
     time.sleep(overall_time)
     window.update()
     
-    frame_c.place_forget()
+    frame_c.place_forget()    #forges the click me button
     window.update()
     frame_f.place(x=round(scalerx*600), y=round(scalery*50))
-    window.update()
+    window.update()                       #displays intructions
     ask_question(temp_val)
-    frame_f.place_forget()
+    frame_f.place_forget()            #removes instructions
     rapid_click()
     
 def rapid_click():
@@ -93,29 +93,29 @@ def rapid_click():
     global _sum
     
     temp_end = end_time()
-    total = temp_end - temp_start
+    total = temp_end - temp_start                #calculates the time taken to press the button
     
     if count != 0:
         print(total)
         _sum += total
-        print(_sum, "sum")
+        print(_sum, "sum")      #just for trouble shooting purposes
    
     if count < 9: 
-        count+=1
+        count+=1            #increase the number of attempted
         print(count)
         
         if count != 1:
             if (total * 1000) < 1000:
                 button5.config(text=f"Count: {count}\nCurrent:\n{round((total * 1000) , 2)} ms")
             else:
-                button5.config(text=f"Count: {count}\nCurrent:\n{round(total, 2)} s")
+                button5.config(text=f"Count: {count}\nCurrent:\n{round(total, 2)} s")           #displays the current time with unit milisecond
         else:
-            button5.config(text=f"Count: {count}")
+            button5.config(text=f"Count: {count}")                #displays
         
         window.update()
         
         window.update()
-        xval = random.randint(0,1500)
+        xval = random.randint(0,1500)                       #spawns button
         yval = random.randint(0,475)
         
         temp_val = random.choice(options)
@@ -131,12 +131,12 @@ def rapid_click():
         time.sleep(overall_time)
         window.update()
         
-        frame_c.place_forget()
+        frame_c.place_forget()     #forgets the click me button
         window.update()
         frame_f.place(x=round(scalerx*600), y=round(scalery*50))
         window.update()
         ask_question(temp_val)
-        frame_f.place_forget()
+        frame_f.place_forget()        #removes the instructions
         rapid_click()
 
     else:

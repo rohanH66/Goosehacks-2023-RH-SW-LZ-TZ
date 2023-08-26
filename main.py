@@ -12,11 +12,11 @@ from mode_3_v1 import mode_3
 from border import border_effects
 import time
 import threading
+from mode_3_v1 import car_thread
 
 def main():
     select_mode()
     from handle_selector import button_one, button_two, button_three, button_four
-    print(button_one, button_two, button_three, button_three)
     try:
         if button_one:
             mode_one()
@@ -26,8 +26,9 @@ def main():
             mode_3()
         else:
             print("yikes")
+    
     except tk.TclError:
-        from mode_3_v1 import car_thread
+        
         global car_thread
         print("closed window early")
         car_thread.stop()

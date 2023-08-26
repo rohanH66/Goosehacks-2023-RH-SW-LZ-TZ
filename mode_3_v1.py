@@ -65,14 +65,40 @@ def car_down(car_frame, xpos):
     global overallxpos
     overallxpos = xpos
     for x in range(45):
-        
+        buttonFont = font.Font(size=round(15*scalerx), family="Cambria")
         window.update()
         time.sleep(.1)
         car_frame.place(x=xpos, y=ypos)
         window.update()
         ypos+=10
         # print (x)
+        
+        # following lines r for hit registration
+        if(400-round(scalery*5) <ypos < 400+round(scalery*5) and (car_xpos-round(scalerx*15))<xpos <(car_xpos+round(scalerx*15))):
+            car_frame.place_forget()
+            end_frame = tk.Frame(master=window, relief=border_effects["groove"], borderwidth=5)
+            
+            
+            end_button=tk.Button (
+                master=end_frame,
+                text = "Oops, you have colided",
+                width=round(scalerx*15),
+                height=round(scalery*5),
+                bg="#ff0000",
+                fg="white",
+                font=buttonFont,
+                command = lambda : window.destroy(),
+            )
+            
+            end_button.pack()
+            end_frame(x=250, y=250)
+            window.update()
+            time.sleep(5)
+            window.destroy()
+            
+            
     ypos = 0
+    car_frame.place_forget()
 
 # def background_car_crash():
 #     temp_list = ['51', '49', '52', '48', '53', '47', '54', '46']

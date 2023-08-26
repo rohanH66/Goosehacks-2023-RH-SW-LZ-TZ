@@ -24,6 +24,8 @@ def select_mode():
     global scalery
     scalery = height/1080
       
+
+
     # car = Image.open("car.png")
     # test = ImageTk.PhotoImage(car)
 
@@ -35,6 +37,11 @@ def select_mode():
 
     buttonFont = font.Font(size=round(15), family="Cambria")
     titleFont = font.Font(size = round(25*scalerx), family="Times New Roman")
+    frame_z = tk.Frame(master=window, relief=border_effects["raised"], borderwidth=7)
+    frame_y= tk.Frame(master=window, relief=border_effects["raised"], borderwidth=7)
+    frame_x = tk.Frame(master=window, relief=border_effects["raised"], borderwidth=7)
+    frame_w = tk.Frame(master=window, relief=border_effects["raised"], borderwidth=7)
+
     frame_a = tk.Frame(master=window, relief=border_effects["raised"], borderwidth=7)
     frame_b = tk.Frame(master=window, relief=border_effects["raised"], borderwidth=7)
     frame_c = tk.Frame(master=window, relief=border_effects["raised"], borderwidth=7)
@@ -60,7 +67,7 @@ def select_mode():
         bg="#355C7D",
         fg="white",
         font=buttonFont,
-        command = lambda : destroy_window(frame_a, frame_b, frame_c, frame_d, window)
+        command = lambda : destroy_window(frame_a, frame_b, frame_c, frame_d, frame_z, frame_y, frame_x, frame_w,window)
     )
     
     button2 = tk.Button(
@@ -71,7 +78,7 @@ def select_mode():
         bg="#355C7D",
         fg="white",
         font=buttonFont,
-        command = lambda : destroy_window(frame_a, frame_b, frame_c, frame_d, window)
+        command = lambda : destroy_window(frame_a, frame_b, frame_c, frame_d, frame_z, frame_y, frame_x, frame_w, window)
     )
     
     button3 = tk.Button(
@@ -82,7 +89,7 @@ def select_mode():
         bg="#355C7D",
         fg="white",
         font=buttonFont,
-        command = lambda : destroy_window(frame_a, frame_b, frame_c, frame_d, window)
+        command = lambda : destroy_window(frame_a, frame_b, frame_c, frame_d, frame_z, frame_y, frame_x, frame_w, window)
     )
     
     button4 = tk.Button(
@@ -93,33 +100,92 @@ def select_mode():
         bg="#355C7D",
         fg="white",
         font=buttonFont,
-        command = lambda : destroy_window(frame_a, frame_b, frame_c, frame_d, window)
+        command = lambda : destroy_window(frame_a, frame_b, frame_c, frame_d, frame_z, frame_y, frame_x, frame_w, window)
+    )
+
+    button5 = tk.Button(
+        master=frame_z,
+        text="Mode 2: (200ms)",
+        width=round(37*scalerx),
+        height=round(5*scalery),
+        bg="#355C7D",
+        fg="white",
+        font=buttonFont,
+        command = lambda : destroy_window(frame_a, frame_b, frame_c, frame_d, frame_z, frame_y, frame_x, frame_w, window)
+    )
+    button6 = tk.Button(
+        master=frame_y,
+        text="Mode 2: (250ms)",
+        width=round(37*scalerx),
+        height=round(5*scalery),
+        bg="#355C7D",
+        fg="white",
+        font=buttonFont,
+        command = lambda : destroy_window(frame_a, frame_b, frame_c, frame_d, frame_z, frame_y, frame_x, frame_w, window)
+    )
+    button7 = tk.Button(
+        master=frame_x,
+        text="Mode 2: (300ms)",
+        width=round(37*scalerx),
+        height=round(5*scalery),
+        bg="#355C7D",
+        fg="white",
+        font=buttonFont,
+        command = lambda : destroy_window(frame_a, frame_b, frame_c, frame_d, frame_z, frame_y, frame_x, frame_w, window)
+    )
+    button8 = tk.Button(
+        master=frame_w,
+        text="Mode 2: (350ms)",
+        width=round(37*scalerx),
+        height=round(5*scalery),
+        bg="#355C7D",
+        fg="white",
+        font=buttonFont,
+        command = lambda : destroy_window(frame_a, frame_b, frame_c, frame_d, frame_z, frame_y, frame_x, frame_w,window)
     )
     
     button1.pack()
     button2.pack()
     button3.pack()
     button4.pack()
+    button5.pack()
+    button6.pack()
+    button7.pack()
+    button8.pack()
+    
     
     frame_a.place(x=round(10*scalerx), y=round(100*scalery))
     frame_b.place(x=round(10*scalerx), y=round(325*scalery))
     frame_c.place(x=round(10*scalerx), y=round(550*scalery))
     frame_d.place(x=round(10*scalerx), y=round(775*scalery))
-    frame_title.place(x=round(600*scalerx), y=round(10*scalery))
+
+    frame_w.place(x=round(600*scalerx), y=round(100*scalery))
+    frame_x.place(x=round(600*scalerx), y=round(325*scalery))
+    frame_y.place(x=round(600*scalerx), y=round(550*scalery))
+    frame_z.place(x=round(600*scalerx), y=round(775*scalery))
+    
     
     button1.bind("<Button-1>", handle_click1)
     button2.bind("<Button-1>", handle_click2)
     button3.bind("<Button-1>", handle_click3)
     button4.bind("<Button-1>", handle_click4)
+    button5.bind("<Button-1>", handle_click1)
+    button6.bind("<Button-1>", handle_click2)
+    button7.bind("<Button-1>", handle_click3)
+    button8.bind("<Button-1>", handle_click4)
     
     window.bind("<Key>", handle_keypress)
     
     window.mainloop()
 
-def destroy_window(a, b, c, d, win):
+def destroy_window(a, b, c, d,e,f,g,h, win):
     time.sleep(0.01)    
     a.destroy()
     b.destroy()
     c.destroy()
     d.destroy()
+    e.destroy()
+    f.destroy()
+    g.destroy()
+    h.destroy()
     window.destroy()
