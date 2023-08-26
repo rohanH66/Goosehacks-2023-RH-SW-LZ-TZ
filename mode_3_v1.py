@@ -38,10 +38,10 @@ def move(event):
     # print(temp)   
     
        
-    if car_xpos == 75:
+    if car_xpos == 75 :
         if (temp=='d' or temp == 'D'):
             car_xpos += 165
-            frame_b.place(x=round(importedscalerx*car_xpos), y=round(importedscalery*650))
+            frame_b.place(x=round(car_xpos*importedscalerx), y=round(importedscalery*650))
             window.update()
         else:
             frame_b.place(x=round(importedscalerx*car_xpos), y=round(importedscalery*650))
@@ -49,11 +49,11 @@ def move(event):
     
     elif car_xpos == 240:
         if (temp=='d' or temp == 'D'):
-            car_xpos = 388
+            car_xpos += 148
             frame_b.place(x=round(importedscalerx*car_xpos), y=round(importedscalery*650))
             window.update()
         elif (temp=='a' or temp == 'A'):
-            car_xpos = 75
+            car_xpos -= 165
             frame_b.place(x=round(importedscalerx*car_xpos), y=round(importedscalery*650))
             window.update()
         else:
@@ -62,7 +62,7 @@ def move(event):
     
     elif car_xpos == 388:
         if (temp=='d' or temp == 'D'):
-            car_xpos = 533
+            car_xpos += 145
             frame_b.place(x=round(importedscalerx*car_xpos), y=round(importedscalery*650))
             window.update()
         elif (temp=='a' or temp == 'A'):
@@ -105,6 +105,8 @@ def car_down(car_frame, xpos, xscaler, yscaler):
     global ypos
     global overallxpos
     overallxpos = xpos
+    
+    
     if end != True:
         for x in range(round(67/yscaler)):
             window.update()
@@ -162,9 +164,9 @@ def mode_3():
     scalerx = width/1920
     scalery = height/1080
     
-    car1_x = 75 * scalerx  #why we adding x position? Road is going horizontal no? -Larry
-    car2_x = 240 * scalerx
-    car3_x = 392 * scalerx
+    car1_x = 75  
+    car2_x = 240 
+    car3_x = 392 
 
     #RH = 1920 x 1080p
     #SW = 1280 x 800p
