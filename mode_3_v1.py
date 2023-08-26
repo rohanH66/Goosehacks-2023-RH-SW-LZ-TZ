@@ -37,8 +37,6 @@ def move(event):
     temp = event.char
     # print(temp)   
     
-    importedscalerx = 1
-    importedscalery = 1
        
     if car_xpos == 75:
         if (temp=='d' or temp == 'D'):
