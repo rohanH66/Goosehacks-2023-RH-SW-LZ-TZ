@@ -11,6 +11,7 @@ from mode_2_v4 import mode_two_v4
 from mode_3_v1 import mode_3
 from border import border_effects
 import time
+import threading
 
 def main():
     select_mode()
@@ -26,8 +27,12 @@ def main():
         else:
             print("yikes")
     except tk.TclError:
+        from mode_3_v1 import car_thread
+        global car_thread
         print("closed window early")
+        car_thread.stop()
     print("complete")
+    car_thread.stop()
 
 if __name__ == '__main__':
     main()

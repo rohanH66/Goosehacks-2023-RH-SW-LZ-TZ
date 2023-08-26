@@ -11,9 +11,8 @@ import threading
 car_xpos = 257
 ypos=0
 
-global t
-
-
+car_thread = ''
+overallxpos = 0
 
 car1_x=157   #why we adding x position? Road is going horizontal no? -Larry
 car2_x=257
@@ -63,6 +62,8 @@ def move(event):
 def car_down(car_frame, xpos):
     
     global ypos
+    global overallxpos
+    overallxpos = xpos
     for x in range(45):
         
         window.update()
@@ -73,27 +74,40 @@ def car_down(car_frame, xpos):
         # print (x)
     ypos = 0
 
-def background_car_crash():
-    while ypos != car_y_pos:
-        if ypos == car_y_pos:
-            
-            window.destory()
-            break
-            print("DONE")
-            
-        else:
-            print("not the same")
-
-t = threading.Thread(target=background_car_crash)
-
-def start():
-    t.start()
-    frame_a.place_forget()
+# def background_car_crash():
+#     temp_list = ['51', '49', '52', '48', '53', '47', '54', '46']
     
-def background_thread():
-    global t
-    t = threading.Thread(target=background_car_crash)
-    t.start()
+    
+            
+    
+#     while car_y_pos not in temp_list:
+#         temp_list = []
+#         for i in range(1,5):
+#             temp_list.append(str(ypos + i))
+#             temp_list.append(str(ypos - i))
+#             print(temp_list)
+#         time.sleep(0.1)
+#     else:
+#         return None
+#         car_thread.stop()
+#         window.destory()
+  
+
+
+
+# def check_if_ready(thread):
+#     print('check')
+#     if thread.is_alive():
+#         # not ready yet, run the check again soon
+#         window.after(200, check_if_ready, thread)
+#     else:
+#         messagebox.showinfo("Ready", "I'm ready!")
+    
+# def start_background_thread():
+#     global car_thread
+#     car_thread = threading.Thread(target=background_car_crash)
+#     car_thread.start()
+#     window.after(200, check_if_ready, car_thread)
 
 def mode_3():
     global window
@@ -148,24 +162,18 @@ def mode_3():
     global frame_e
     frame_e = tk.Frame(master=window, relief=border_effects["groove"], borderwidth=7)
 
-    
-
-    
-
-    
-
-    button1 = tk.Button(
-        master=frame_a,
-        text="Click me to start!",
-        width=round(scalerx*25),
-        height=round(scalery*5),
-        bg="#266867",
-        fg="white",
-        font=titleFont,
-        command=lambda: t.start()
-    )
-    button1.pack()
-    frame_a.place(x=0,y=0)
+    # button1 = tk.Button(
+    #     master=frame_a,
+    #     text="Click me to start!",
+    #     width=round(scalerx*25),
+    #     height=round(scalery*5),
+    #     bg="#266867",
+    #     fg="white",
+    #     font=titleFont
+    #     command= lambda : start_background_thread()
+    # )
+    # button1.pack()
+    # frame_a.place(x=0,y=0)
    
 
     player_car=tk.Button(
@@ -183,11 +191,7 @@ def mode_3():
     frame_b.place(x=car_xpos, y=400)
     window.bind("<Key>", move)
 
-    if ypos == car_xpos:
-            window.destory()
-    else:
-        print("okay")
-        window.update()
+    
 
     car1=tk.Button(
         master=frame_c,
@@ -235,6 +239,6 @@ def mode_3():
     # frame_c.place(x=car1, y=0)
     car_down(frame_e,car3_x)
 
-    t.stop()
+    
     
     window.mainloop()
