@@ -35,7 +35,10 @@ def move(event):
     frame_b.place_forget()
     global car_xpos
     temp = event.char
-    # print(temp)
+    # print(temp)   
+    
+    importedscalerx = 1
+    importedscalery = 1
        
     if car_xpos == 75:
         if (temp=='d' or temp == 'D'):
@@ -110,7 +113,7 @@ def car_down(car_frame, xpos, xscaler, yscaler):
             time.sleep(.1)
             car_frame.place(x=round(xpos*xscaler), y=round(ypos*yscaler))
             window.update()
-            ypos += round(yscaler*10)
+            ypos += round(10)
             
             # print (x)
             
@@ -128,10 +131,6 @@ def car_down(car_frame, xpos, xscaler, yscaler):
                 break
     else:
         pass
-            
-            
-            
-            
             
     ypos = 0
     car_frame.place_forget()
@@ -287,9 +286,5 @@ def mode_3():
     car3.pack()
     # frame_c.place(x=car1, y=0)
     car_down(frame_e,car3_x, scalerx, scalery)
-    
-    
-
-    
     
     window.mainloop()
