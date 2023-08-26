@@ -54,7 +54,7 @@ def move(event):
             window.update()
         elif (temp=='a' or temp == 'A'):
             car_xpos = 75
-            frame_b.place(x=car_xpos, y=round(importedscalery*650))
+            frame_b.place(x=round(importedscalerx*car_xpos), y=round(importedscalery*650))
             window.update()
         else:
             frame_b.place(x=round(importedscalerx*car_xpos), y=round(importedscalery*650))
@@ -95,7 +95,7 @@ def move(event):
             frame_b.place(x=round(importedscalerx*car_xpos), y=round(importedscalery*650))
             window.update()
     else:
-        frame_b.place(x=car_xpos, y=650)
+        frame_b.place(x=round(importedscalerx*car_xpos), y=round(importedscalery*650))
         window.update()
     # print(car_xpos)
     
@@ -111,7 +111,7 @@ def car_down(car_frame, xpos, xscaler, yscaler):
             time.sleep(.1)
             car_frame.place(x=round(xpos*xscaler), y=round(ypos*yscaler))
             window.update()
-            ypos += round(10)
+            ypos += round(10*yscaler)
             
             # print (x)
             
