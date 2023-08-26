@@ -4,7 +4,7 @@ from PIL import ImageTk
 from PIL import Image
 from PIL import ImageOps
 from border import border_effects
-from handle_selector import handle_click1, handle_click2, handle_click3, handle_click4, handle_keypress
+from handle_selector import handle_click1, handle_click2, handle_click3, handle_click4, handle_click5, handle_click6, handle_click7, handle_click8, handle_keypress
 import time
 
 window = tk.Tk()
@@ -23,6 +23,10 @@ def select_mode():
     scalerx = width/1920
     global scalery
     scalery = height/1080
+    
+    with open("window.txt", "w") as scalers:
+        scalers.write(f"{scalerx}, {scalery}")
+        
       
 
 
@@ -169,10 +173,10 @@ def select_mode():
     button2.bind("<Button-1>", handle_click2)
     button3.bind("<Button-1>", handle_click3)
     button4.bind("<Button-1>", handle_click4)
-    button5.bind("<Button-1>", handle_click1)
-    button6.bind("<Button-1>", handle_click2)
-    button7.bind("<Button-1>", handle_click3)
-    button8.bind("<Button-1>", handle_click4)
+    button5.bind("<Button-1>", handle_click5)
+    button6.bind("<Button-1>", handle_click6)
+    button7.bind("<Button-1>", handle_click7)
+    button8.bind("<Button-1>", handle_click8)
     
     window.bind("<Key>", handle_keypress)
     

@@ -19,7 +19,7 @@ temp_end = 0
 _sum = 0          #it is a sum of all reaction times to calculate average
 
 
-overall_time = 0.25   #this is the reaction time required of this mode
+overall_time = 0.2 #this is the reaction time required of this mode
 
 def destroy_window(win):  #function to destroy the window 
     time.sleep(0.01)    
@@ -57,13 +57,13 @@ def ask_question(value):
 def start_time():
     start_time = time.time()
     return start_time
-def end_time():                                                #calculates user reaction times
+def end_time():                #calculates user reaction times
     end_time = time.time()
     return end_time
 
 def start():
     global overall_time
-    frame_a.place_forget()                         #forgets the start buttons that display instruction
+    frame_a.place_forget()        #forgets the start buttons that display instruction
     frame_b.place_forget()
     window.update()
     temp_val = random.choice(options)        #gets a value between 0 and 2 inclusive
@@ -81,9 +81,9 @@ def start():
     frame_c.place_forget()    #forges the click me button
     window.update()
     frame_f.place(x=round(scalerx*600), y=round(scalery*50))
-    window.update()                       #displays intructions
+    window.update()                #displays intructions
     ask_question(temp_val)
-    frame_f.place_forget()            #removes instructions
+    frame_f.place_forget()       #removes instructions
     rapid_click()
     
 def rapid_click():
@@ -93,41 +93,48 @@ def rapid_click():
     global _sum
     
     temp_end = end_time()
-    total = temp_end - temp_start                #calculates the time taken to press the button
+    total = temp_end - temp_start        #calculates the time taken to press the button
     
     if count != 0:
         print(total)
         _sum += total
-        print(_sum, "sum")      #just for trouble shooting purposes
+        print(_sum, "sum")    #just for trouble shooting purposes
    
     if count < 9: 
-        count+=1            #increase the number of attempted
+        count+=1         #increase the number of attempted
         print(count)
         
         if count != 1:
             if (total * 1000) < 1000:
                 button5.config(text=f"Count: {count}\nCurrent:\n{round((total * 1000) , 2)} ms")
             else:
-                button5.config(text=f"Count: {count}\nCurrent:\n{round(total, 2)} s")           #displays the current time with unit milisecond
+                button5.config(text=f"Count: {count}\nCurrent:\n{round(total, 2)} s")      #displays the current time with unit milisecond
         else:
-            button5.config(text=f"Count: {count}")                #displays
+            button5.config(text=f"Count: {count}")      #displays
         
         window.update()
         
         window.update()
-        xval = random.randint(0,1500)                       #spawns button
+        
+        #spawns button
+        xval = random.randint(0,1500)   #spawns button
         yval = random.randint(0,475)
         
         temp_val = random.choice(options)
         print(temp_val)
-        button3.config(text=f"{arrows[temp_val]}")
+        button3.config(text=f"{arrows[temp_val]}")  
+        
+        #randomly choses which arrow to display
+
+
         window.update()
         time.sleep(random.randint(1,5))
         window.update()
         temp_start = start_time()
         frame_c.place(x=round(scalerx*xval), y=round(scalery*yval))
         window.update()
-        
+        #picks random time to spawn the button in randome position
+
         time.sleep(overall_time)
         window.update()
         
@@ -136,7 +143,7 @@ def rapid_click():
         frame_f.place(x=round(scalerx*600), y=round(scalery*50))
         window.update()
         ask_question(temp_val)
-        frame_f.place_forget()        #removes the instructions
+        frame_f.place_forget() #removes the instructions
         rapid_click()
 
     else:
@@ -148,6 +155,8 @@ def rapid_click():
         frame_d.place(x=round(scalerx*350),y=round(scalery*160))
         frame_c.place_forget()
 
+        #display end result
+
 def mode_two_v1():
     global window
     window = tk.Tk()
@@ -155,6 +164,7 @@ def mode_two_v1():
     #RH = 1920 x 1080p
     #SW = 1280 x 800p
     #SW = 1920 x 1200
+    #lz =1280 x 720
     
     width = window.winfo_screenwidth()
     height = window.winfo_screenheight()
@@ -167,10 +177,14 @@ def mode_two_v1():
     global scalery
     scalery = height/1080
     
+    #variables to adjust the ratios due to people having different screen resolution and size 
+
     buttonFont = font.Font(size=round(15*scalerx), family="Cambria")
     arrowFont = font.Font(size=round(19*scalerx), family="Cambria", weight="bold")
     endFont = font.Font(size=round(20*scalerx), family="Cambria")
     titleFont = font.Font(size = round(18*scalerx), family="Cambria")
+
+    #initiate all the fonts
     
     window.title("Mode 2")
     
@@ -184,6 +198,8 @@ def mode_two_v1():
 
     backgroundimg = tk.Label(image=test)
     backgroundimg.image = test
+
+    #sets the background pic
 
     # Position image
     backgroundimg.place(x=0, y=0)
@@ -209,6 +225,8 @@ def mode_two_v1():
     frame_g = tk.Frame(master=window, relief=border_effects["groove"], borderwidth=7)
     
     frame_h = tk.Frame(master=window, relief=border_effects["groove"], borderwidth=7)
+
+    #sets various frames for various buttons for later use
     
     
     # greeting.place(x=0, y=0)
@@ -278,6 +296,7 @@ def mode_two_v1():
         text=f"Count: {count}"
     )
     frame_e.place(x=round(scalerx*50), y=round(scalery*720))
+    #sets the other values and aspects of buttons
     
     
     
@@ -295,8 +314,10 @@ def mode_two_v1():
         text=f"Enter the key on your keyboard that corresponds with the arrow shown \n 'A' = Left 'D' = Right 'W' = Up \n(if you do not know, just guess)"
     )
     button6.pack()
+    #sets the values of buttons
     
     window.bind("<Key>", handle_keypress)
+    #connects keypress to a function
     
     
     button5.pack()
@@ -331,6 +352,8 @@ def mode_two_v1():
     frame_h.place(x=round(1450*scalerx),y=round(710*scalery))
     
     button6.pack()
+
+    #set various buttons
     
     
     

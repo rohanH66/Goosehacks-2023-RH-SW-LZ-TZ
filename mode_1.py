@@ -9,22 +9,28 @@ import random
 import time
 import sys
 
+# this is the code for mode 1, where it is basically a reaction time test + aim trainer + peripheral vision test.
+# the program will spawn buttons in random intervals and locations that the user has to click.
 count = 0
 temp_start = 0
 temp_end = 0
 _sum = 0
-average = list()
+
+#sets variables that we will need later. These keep tract of time, and counts how many buttons have been pressed
 
 def destroy_window(win):
     time.sleep(0.01)    
     window.destroy()
+#function to destory window
 
 def start_time():
     start_time = time.time()
     return start_time
+#function to get the start time
 def end_time():
     end_time = time.time()
     return end_time
+#funtion to get the end
 
 def start():
     frame_a.place_forget()
@@ -33,8 +39,9 @@ def start():
     time.sleep(random.randint(1,5))
     temp_start = start_time()
     frame_c.place(x=round(scalerx * random.randint(0,1500)), y=round(scalery * random.randint(0,475)))
+#function to initate the start of the program by spawning a random button
     
-def rapid_click():
+def rapid_click():  #function that will spawn in the next button
     global temp_start
     global temp_end
     global count
@@ -42,17 +49,21 @@ def rapid_click():
     
     temp_end = end_time()
     total = temp_end - temp_start
+
+    #calculates the total time spent per button
     
     if count != 0:
         print(total)
         _sum += total
         print(_sum, "sum")
+    #prints out the total time spent on all the buttons after each button has been pressed. 
+    #for testing purpose
    
-    if count < 9: 
+    if count < 9: #if less than 10 buttons have been pressed. 
         count+=1
         print(count)
         
-        if count != 1:
+        if count != 1: #if it is not the first button. update the total time shown on button 5 as well as the amount 
             if (total * 1000) < 1000:
                 button5.config(text=f"Count: {count}\nCurrent:\n{round((total * 1000) , 2)} ms")
             else:
@@ -63,6 +74,7 @@ def rapid_click():
         window.update()
         frame_c.place_forget()
         button3.place_forget()
+        #forgets the starting buttons 
         
         window.update()
         time.sleep(random.randint(1,5))
@@ -70,6 +82,7 @@ def rapid_click():
         yval = random.randint(0,475)
         frame_c.place(x=round(scalerx*xval), y=round(scalery*yval))
         temp_start = start_time()
+        #places the first button of the acutal sequence of the buttons in a random spot
         
     else:
         count+=1
@@ -79,6 +92,8 @@ def rapid_click():
         window.update()
         frame_d.place(x=round(scalerx*350),y=round(scalery*160))
         frame_c.place_forget()
+
+    #displays endscreen once 10 buttons have been clicked
 
 def mode_one():
     global window
@@ -95,16 +110,20 @@ def mode_one():
     print(height)
 
     global scalerx
-    scalerx = width/1920
+    scalerx = width / 1920
     global scalery
-    scalery = height/1080
+    scalery = height / 1080
+
+    #variables so we can gauge where to place buttons based on the user's screen resolution
     
     buttonFont = font.Font(size=round(15*scalerx), family="Cambria")
     endFont = font.Font(size=round(20*scalerx), family="Cambria")
     titleFont = font.Font(size = round(18*scalerx), family="Cambria")
     window.title("Mode 1")
     window.state('zoomed')
-    
+    #initiate variables like fonts and other aspects of buttons
+
+
     car = Image.open("car.png")
     wth, hgt = car.size
     car = car.resize((round(wth * scalerx), round(hgt * scalery)))
@@ -213,6 +232,8 @@ def mode_one():
     )
     button8.pack()
     frame_h.place(x=round(1450*scalerx),y=round(710*scalery))
+
+    #initiate and places the various buttons
     
     
     window.mainloop()
