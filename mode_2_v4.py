@@ -178,7 +178,7 @@ def mode_two_v4():
 
     #initiate all the fonts
     
-    window.title("Mode 2")
+    window.title("Mode 2 (350 ms Test)")
     
     window.state('zoomed')
     
@@ -255,7 +255,7 @@ def mode_two_v4():
         bg="#2F5D8C",
         fg="white",
         font=titleFont,
-        text="Directions:\nThis module tests your peripheral vision and your reaction speed from stilmuli at your peripheral \n vision. For the test to be accurate, please keep your eyes at center of the screen. \n\nClick to continue.",
+        text="Directions:\nThis module tests your peripheral vision and your reaction speed from stilmuli at your peripheral \n vision. For the test to be accurate, please keep your eyes at center of the screen. \n\nClick to continue. (350 ms Test)",
         justify='center',
         command=lambda: frame_b.place_forget()
     )  

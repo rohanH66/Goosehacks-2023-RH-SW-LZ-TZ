@@ -27,15 +27,6 @@ def select_mode():
     with open("window.txt", "w") as scalers:
         scalers.write(f"{scalerx}, {scalery}")
 
-    # car = Image.open("car.png")
-    # test = ImageTk.PhotoImage(car)
-
-    # backgroundimg = tk.Label(image=test)
-    # backgroundimg.image = test
-
-    # # Position image
-    # backgroundimg.place(x=0, y=0)
-
     buttonFont = font.Font(size=round(15), family="Cambria")
     titleFont = font.Font(size = round(25*scalerx), family="Times New Roman")
     frame_z = tk.Frame(master=window, relief=border_effects["raised"], borderwidth=7)
@@ -59,6 +50,7 @@ def select_mode():
         font=titleFont
     )
     title.pack()
+    frame_title.place(x=(500*scalerx), y= (10*scalery))
     
     button1 = tk.Button(
         master=frame_a,
@@ -155,15 +147,15 @@ def select_mode():
     button8.pack()
     
     
-    frame_a.place(x=round(10*scalerx), y=round(100*scalery))
-    frame_b.place(x=round(10*scalerx), y=round(325*scalery))
-    frame_c.place(x=round(10*scalerx), y=round(550*scalery))
-    frame_d.place(x=round(10*scalerx), y=round(775*scalery))
+    frame_a.place(x=round(10*scalerx), y=round(120*scalery))
+    frame_b.place(x=round(10*scalerx), y=round(345*scalery))
+    frame_c.place(x=round(10*scalerx), y=round(570*scalery))
+    frame_d.place(x=round(10*scalerx), y=round(795*scalery))
 
-    frame_w.place(x=round(600*scalerx), y=round(100*scalery))
-    frame_x.place(x=round(600*scalerx), y=round(325*scalery))
-    frame_y.place(x=round(600*scalerx), y=round(550*scalery))
-    frame_z.place(x=round(600*scalerx), y=round(775*scalery))
+    frame_w.place(x=round(600*scalerx), y=round(120*scalery))
+    frame_x.place(x=round(600*scalerx), y=round(345*scalery))
+    frame_y.place(x=round(600*scalerx), y=round(570*scalery))
+    frame_z.place(x=round(600*scalerx), y=round(795*scalery))
     
     
     button1.bind("<Button-1>", handle_click1)

@@ -154,13 +154,13 @@ def mode_3():
     
     importedscalerx, importedscalery = get_scalers()
     
-    print(importedscalerx, importedscalery)
+    # print(importedscalerx, importedscalery)
     width = window.winfo_screenwidth()
     height = window.winfo_screenheight()
-    print(width, height)
+    # print(width, height)
     
-    print(width)
-    print(height)
+    # print(width)
+    # print(height)
     
     scalerx = width/1920
     scalery = height/1080
@@ -216,7 +216,7 @@ def mode_3():
         text = "Oops, you have colided",
         width=round(scalerx*30),
         height=round(scalery*5),
-        bg="#ff0000",
+        bg="#3F76BF",
         fg="white",
         font=buttonFont,
         command = lambda : window.destroy(),
@@ -230,7 +230,7 @@ def mode_3():
         text="main car",
         width=round(scalerx*10),
         height=round(scalery*3),
-        bg="#266867",
+        bg="#3F76BF",
         fg="white",
         font=buttonFont,
         
@@ -247,7 +247,7 @@ def mode_3():
         text="Car 1!",
         width=round(scalerx*10),
         height=round(scalery*3),
-        bg="#266867",
+        bg="#3F76BF",
         fg="white",
         font=buttonFont,
     )
@@ -264,7 +264,7 @@ def mode_3():
         text="Car 2!",
         width=round(scalerx*10),
         height=round(scalery*3),
-        bg="#266867",
+        bg="#3F76BF",
         fg="white",
         font=buttonFont,
         
@@ -279,7 +279,7 @@ def mode_3():
         text="Car 3!",
         width=round(scalerx*9),
         height=round(scalery*3),
-        bg="#266867",
+        bg="#3F76BF",
         fg="white",
         font=buttonFont,
     )
