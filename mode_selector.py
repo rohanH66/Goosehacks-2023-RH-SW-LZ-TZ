@@ -87,7 +87,7 @@ def select_mode():
     
     button4 = tk.Button(
         master=frame_d,
-        text="Mode 4: tbd",
+        text="Mode 4: Future Update \n(Coming Soon)",
         width=round(37*scalerx),
         height=round(5*scalery),
         bg="#355C7D",
