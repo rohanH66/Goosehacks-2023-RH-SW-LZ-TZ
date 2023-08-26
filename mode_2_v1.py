@@ -8,7 +8,7 @@ from handle_selector import *
 import random
 import time
 import sys
-from handle_mode_two import handle_keypress, keypress, temp_char
+from handle_mode_2 import handle_keypress, keypress, temp_char
 import keyboard
 
 

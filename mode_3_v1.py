@@ -121,7 +121,7 @@ def mode_3():
     window.title("Mode 3")
     window.state('zoomed')
     
-    road = Image.open("4lane.png")
+    road = Image.open("four_lane.png")
     wth, hgt = road.size
     road = road.resize((round(wth * scalerx), round(hgt * scalery)))
     
